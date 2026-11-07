@@ -1,1 +1,90 @@
 /*  your css code here. If applicable */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f4f6fb;
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+}
+
+.progress-container {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  width: 350px;
+  max-width: 90%;
+}
+
+/* the grey track behind the circles */
+.progress-container::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  height: 4px;
+  width: 100%;
+  background-color: #e0e0e0;
+  z-index: 0;
+}
+
+/* the blue fill that grows as the user moves forward */
+.progress {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  height: 4px;
+  width: 0%;
+  background-color: #3498db;
+  z-index: 0;
+  transition: width 0.4s ease;
+}
+
+.circle {
+  position: relative;
+  z-index: 1;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  border: 3px solid #e0e0e0;
+  color: #999999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: border-color 0.4s ease, color 0.4s ease;
+}
+
+.circle.active {
+  border-color: #3498db;
+  color: #3498db;
+}
+
+.buttons {
+  display: flex;
+  gap: 12px;
+}
+
+button {
+  background-color: #3498db;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 22px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+button:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
